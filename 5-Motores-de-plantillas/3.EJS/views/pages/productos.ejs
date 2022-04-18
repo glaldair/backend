@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Incluir el head -->
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+    <h1>Rellena el formulario para agreagar un nuevo producto</h1>
+
+    <!-- Incluir la barra de navegacion -->
+    <%- include('../partials/navbar'); %>
+    
+    <ul class="list-group list-group-horizontal">
+        <% productos.forEach(function(producto) { %>
+            <li class="list-group-item">
+                <%= producto.nombre %> $<%= producto.precio %>, id:<%= producto.id %>
+            </li>
+        <% }); %>
+    </ul>
+
+</body>
+</html>

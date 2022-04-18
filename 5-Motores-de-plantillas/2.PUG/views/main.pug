@@ -1,0 +1,17 @@
+html
+    head
+        include includes/head.pug
+    body 
+        <h1>Rellena el formulario para agreagar un nuevo producto</h1>
+        include includes/navegacion.pug
+
+        form(action="http://localhost:8080/api/productos", method="post")
+            div.row.g-3
+                div.col-sm-7
+                    input(type="text", name="nombre", class="form-control", placeholder="Nombre del producto", aria-label="Nombre del producto")
+                div.col-sm
+                    input(type="number", name="precio", class="form-control", placeholder="Precio del producto", aria-label="Precio del producto")
+                div.col-sm
+                    input(type="number", name="id", class="form-control", placeholder="ID del producto", aria-label="ID del producto")
+                div.col-auto
+                    button.btn.btn-primary(type="submit") Agregar Producto
