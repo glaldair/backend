@@ -1,0 +1,18 @@
+{{> navbar}}
+
+<main class="products">
+    <h2 class="products__title"> Productos </h2>
+    <ul class="products__list">
+        {{#each products}}
+        <li class="products__item">
+            <img class="products__image" src="{{this.image}}" alt="{{this.name}}">
+            <p class="products__id"> id: {{this.id}} </p>
+            <h3 class="products__name"> {{this.name}} </h3>
+            <p class="products__description"> {{this.description}} </p>
+            <p class="products__price"> precio: ${{this.price}} </p>
+            <p class="proproducts__stock"> stock: {{this.stock}} </p>
+            <p class="products__status {{this.status}}"> status: {{this.status}} </p>
+        </li>
+        {{/each}}
+    </ul>   
+</main>

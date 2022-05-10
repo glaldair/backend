@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="js/index.js"></script>
+</head>
+<body>
+
+    <h1 class="logo">
+        <a href="/" class="logo-link"> Super Yajid </a>
+    </h1>
+    
+    <nav class="navbar">
+        <ul class="navbar__list">
+            <li class="navbar__item">
+                <a href="/" class="navbar__link">Home</a>
+            </li>
+            <li class="navbar__item">
+                <a href="/productos" class="navbar__link">Productos</a>
+            </li>
+            <li class="navbar__item">
+                <a href="/formulario" class="navbar__link">Añadir producto</a>
+            </li>
+            <li class="navbar__item">
+                <a href="chat.html" class="navbar__link">Chat</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h2 class="title">Chat de usuarios</h2>
+
+    <div class="chat">
+
+        <div class="chat__users" id="usermessages">
+            <!-- Aquí se cargan los usuarios -->
+        </div>
+
+        <form class="chat__group" onsubmit="addMessage(this)">
+            <input type="text" placeholder="Escribe tu nombre de usuario" class="chat__group-input" id="username">
+            <input type="text" placeholder="Escribe tu mensaje" class="chat__group-input" id="message">
+            <button class="chat__button" id="send" type="submit">Enviar</button>
+        </form>
+    </div>
+    
+</body>
+</html>
+
+
+
+<!-- socket.emit('messages', messages);
+socket.on('new-message', data => {
+    const newuser = new User(data .name, data.message);
+    console.log(newuser);
+    messagesDB.insert(newuser);
+    io.emit('messages', messagesDB.getAll());
+}); -->
