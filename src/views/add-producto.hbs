@@ -1,0 +1,159 @@
+{{> navbar}}
+
+<form class="container" action="/add-producto" method="post" 
+onsubmit="
+if (
+        document.getElementById('nombre').value == '' ||
+        document.getElementById('descripcion').value == '' ||
+        document.getElementById('detalles').value == '' ||
+        document.getElementById('precio').value == '' ||
+        document.getElementById('codigo').value == '' ||
+        document.getElementById('grupo').value == '' ||
+        document.getElementById('categoria').value == '' ||
+        document.getElementById('subcategoria').value == '' ||
+        document.getElementById('imagenes').querySelectorAll('input').length == 0 ||
+        document.getElementById('imagenes').querySelectorAll('input')[0].value == '' ||
+        document.getElementById('marca').value == '' ||
+        document.getElementById('stock').value == '' ||
+        document.getElementById('timestamp').value == '' ||
+        document.getElementById('estado').value == ''
+    ) {
+        alert('Faltan campos por llenar');
+        return false;
+    }
+
+    return true;
+">
+    <div class="alert alert-primary text-center">
+        <h4 class="alert-heading">
+        Rellena todos los campos para añadir un producto
+        </h4>
+    </div>
+
+    <div class="form-group row g-3 mb-2">
+        <div class="col">
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del producto" aria-label="Nombre del producto">
+        </div>
+        <div class="col">
+            <input type="text" name="id" id="id" placeholder="Id del producto" class="form-control number">
+        </div>
+    </div>
+    <div class="form-group row g-3 mb-2">
+        <div class="col">
+            <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion breve del producto" class="form-control">
+        </div>
+        <div class="col">
+            <input type="textarea" name="detalles" id="detalles" placeholder="Detalles completos del producto" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row g-3 mb-2">
+        <div class="col">
+            <input type="text" name="precio" id="precio" placeholder="Precio del producto" class="form-control number">
+        </div>
+        <div class="col">
+            <input type="text" name="preciomayoreo" id="preciomayoreo" placeholder="Precio a mayoreo del producto" class="form-control number">
+        </div>
+    </div>
+    <div class="form-group row g-3 mb-2">
+        <div class="col">
+            <input type="text" name="cantidadmayoreo" id="cantidadmayoreo" placeholder="Cantidad a mayoreo del producto" class="form-control number">
+        </div>
+        <div class="col">
+            <input type="text" name="codigo" id="codigo" placeholder="Codigo del producto" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row g-3 mb-2">
+        <div class="col">
+            <input type="text" name="stock" id="stock" placeholder="Stock del producto" class="form-control number">
+        </div>
+        <div class="col">
+            <input type="text" name="ventas" id="ventas" placeholder="Ventas del producto" class="form-control number">
+        </div>
+    </div>
+
+    <div class="form-group row g-3 mb-2">
+        <div class="col">
+            <input type="text" name="departamento" id="departamento" placeholder="Departamento del producto" class="form-control lowercase">
+        </div>
+        <div class="col">
+            <input type="text" name="categoria" id="categoria" placeholder="Categoria del producto" class="form-control lowercase">
+        </div>
+    </div>
+    <div class="form-group row g-3 mb-2">
+        <div class="col">
+            <input type="text" name="marca" id="marca" placeholder="Marca del producto" class="form-control lowercasespace">
+        </div>
+    </div>
+    <div class="form-group row g-3 mb-2">
+        <div class="col">
+            <input type="datetime-local" name="timestamp" id="timestamp" class="form-control">
+        </div>
+        <div class="col">
+            <select name="estado" id="estado" class="lowercase form-select">
+                <option value="" selected disabled>Seleccione un estado</option>
+                <option value="true">Activo</option>
+                <option value="false">Inactivo</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row g-3 mb-2">
+        <div class="form-group g-3" id="imgenes">
+                {{!-- Crear un array de imagenes con input --}}
+            <div class="col mb-1">
+                <input type="text" name="imagen[]" id="imagen" placeholder="Ingrese la url de la imagen" class="form-control">
+                {{!-- Añadir un boton que cree un boton para eliminar el input --}}
+                <button type="button" class="btn btn-danger" id="eliminar" onclick="this.parentElement.remove()">Eliminar</button>
+            </div>
+        </div>
+        <button type="button" onclick="
+            const newimagen = document.createElement('div');
+            newimagen.className = 'col';
+            newimagen.className = 'mb-1';
+            newimagen.innerHTML = `
+                <input type='text' name='imagen[]'' id='imagen' placeholder='Ingrese la url de la imagen' class='form-control'>
+                <button type='button' class='btn btn-danger' id='eliminar' onclick='this.parentElement.remove()'>Eliminar</button>
+            `;
+            document.getElementById('imgenes').appendChild(newimagen);
+            " class="btn btn-primary mb-2">
+            Añadir imagen
+        </button>
+    </div>
+
+    <div class="form-group row g-3 mb-2">
+        <button type="reset" class="col btn btn-warning">Vaciar formulario</button>
+        <button type="submit" class="col btn btn-success">Agregar</button>
+    </div>
+</form>
+
+
+
+<script>
+    const inputs = document.getElementsByClassName('number');
+    for (const input of inputs) {
+        input.addEventListener('keypress', function(e) {
+            if (e.key.match(/[^0-9.]/g)) {
+                e.preventDefault();
+            }
+        });
+    }
+
+
+    const inputsLowercase = document.getElementsByClassName('lowercase');
+    for (const input of inputsLowercase) {
+        input.addEventListener('keypress', function(e) {
+            this.value = this.value.toLowerCase();
+            if (e.keyCode < 97 || e.keyCode > 122) {
+                e.preventDefault();
+            }
+        });
+    }
+    
+    const inputslowercasespace = document.getElementsByClassName('lowercasespace');
+    for (const input of inputslowercasespace) {
+        input.addEventListener('keypress', function(e) {
+            // Validar que todas las letras sean minusculas
+            this.value = this.value.toLowerCase();
+        });
+    }
+</script>

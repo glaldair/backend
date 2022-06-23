@@ -1,0 +1,29 @@
+{
+  "name": "desafios-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glaldair/backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glaldair/backend/issues"
+  },
+  "homepage": "https://github.com/glaldair/backend#readme",
+  "dependencies": {
+    "connect-mongo": "^4.6.0",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "firebase-admin": "^11.0.0",
+    "mongoose": "^6.4.0"
+  }
+}

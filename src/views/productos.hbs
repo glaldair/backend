@@ -1,0 +1,36 @@
+{{> navbar}}
+
+
+<div class="container">
+    <h1>Productos en base de datos</h1>
+    <div class="row">
+        {{#each productos}}
+            <a href='/productos/{{id}}' class="col card text-decoration-none ms-1 mb-1" style="max-width: 15rem; height: 25rem;">
+                <img src="{{imagen}}" class="img-fluid" alt="{{nombre}}" style="max-height: 40%; min-height: 40%;">
+                <div class="card-body">
+                    <h5 class="card-title">{{nombre}}</h5>
+                    <p class="card-text">{{descripcion}}</p>
+                    <ul class="list-group list-group-flush">
+                        <li>precio: ${{precio}}</li>
+                        <li>mayoreo: ${{preciomayoreo}}</li>
+                        <li>stock: {{stock}}</li>
+                        <li>estado: <span class="estatus">{{estado}}</span></li>
+                    </ul>
+                </div>
+            </a>
+        {{/each}}
+    </div>
+</div>
+
+
+
+<script>
+    const cards = document.getElementsByClassName('card');
+    for (const card of cards) {
+        const estatus = card.querySelector('.estatus').innerText;
+        if (estatus == 'false') {
+            card.classList.add('border');
+            card.classList.add('border-danger');
+        }
+    }
+</script>

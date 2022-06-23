@@ -1,9 +1,0 @@
-html
-    include includes/head.pug
-    body 
-        <h1>Lista de productos en existencia</h1>
-        include includes/navegacion.pug
-
-        ul.list-group.list-group-horizontal
-            each producto in productos
-                li.list-group-item= producto.nombre + " " + "$" + producto.precio + ", " + "id:" + producto.id
