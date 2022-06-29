@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
-const usersCollection = "sessions";
 
+mongoose.connect('mongodb://localhost/auth', {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+}, () => console.log('Connected'));
+
+const usersCollection = "usuarios";
 const userSchema = new mongoose.Schema({
     username: {type: String, required: true, max: 100},
     password: {type: String, required: true, max: 100},
     email: {type: String, required: true, max: 100},
 });
 
-const usersModel = mongoose.model(usersCollection, userSchema);
-
-module.exports = { usersModel }
+module.exports = mongoose.model(usersCollection, userSchema);

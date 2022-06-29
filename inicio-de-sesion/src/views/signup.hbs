@@ -1,0 +1,22 @@
+<div class="container d-flex flex-column justify-content-center align-center text-center" style="height: 100vh;">
+
+    <h1 class="fs-1 fw-bold">Rellena todos los campos para registrarte</h1>
+    <hr>
+
+    <form class="form" role="form" action="/signup" method="post" autocomplete="off">
+        <div class="form-group d-flex justify-content-center align-center">
+            <input name='username' placeholder="Nombre de usuario" class="form-control mx-1 my-1" type="text" required>
+            <input name='email' placeholder="Email" class="form-control mx-1 my-1" type="text" required>
+        </div>
+        <div class="form-group d-flex justify-content-center align-center">
+            <input name='password' placeholder="Contraseña" class="form-control mx-1 my-1" type="password" required>
+        </div>
+
+        <div class="form-group d-flex justify-content-center align-center">
+            <input class="btn btn-success my-3" type="submit" value="Crear cuenta">
+        </div>
+    </form>
+
+    <hr>
+    <a href="/" class="btn btn-primary my-3">Ir a la página principal</a>
+</div>

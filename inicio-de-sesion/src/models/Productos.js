@@ -11,7 +11,7 @@ class Productos {
         // Si el id ya existe, se cancela la operacion
         const productosCollection = db.collection(this.nombre);
         const id = Objeto.id;
-        const doc = productosCollection.doc(`${id}`)
+        const doc = productosCollection.doc(`${id}`);
 
         // Si el id ya existe, se cancela la operacion
         const existe = await doc.get();

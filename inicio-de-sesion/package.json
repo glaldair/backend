@@ -19,11 +19,13 @@
   },
   "homepage": "https://github.com/glaldair/backend#readme",
   "dependencies": {
-    "connect-mongo": "^4.6.0",
+    "bcrypt": "^5.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "firebase-admin": "^11.0.0",
-    "mongoose": "^6.4.0"
+    "mongoose": "^6.4.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   }
 }
