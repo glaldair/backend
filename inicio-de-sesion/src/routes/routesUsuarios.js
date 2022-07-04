@@ -53,7 +53,8 @@ async function deleteSesion(req, res){
 async function profile (req, res) {
     if (req.isAuthenticated()) {
         let user = req.user.username;
-        res.render('profile', { name: user });
+        let email = req.user.email;
+        res.render('profile', { name: user, email: email });
     } else {
         res.redirect('login');
     }

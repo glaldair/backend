@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const { MONGO_URI } = require('../config/globals.js');
 
-mongoose.connect('mongodb://localhost/auth', {
+mongoose.connect(MONGO_URI, {
     useNewUrlParser: true, 
     useUnifiedTopology: true
 }, () => console.log('Connected'));

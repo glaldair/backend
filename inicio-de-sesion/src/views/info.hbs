@@ -1,0 +1,39 @@
+{{> navbar}}
+
+<div class="container d-flex flex-column justify-content-center align-center text-center" style="height: 100vh;">
+    <h1 class="fs-1 fw-light">Información de la aplicación</h1>
+
+    {{!-- Obtener los argumentos de entrada --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="fw-light">Argumentos de entrada</h3>
+                <ul class="list-group">
+                    {{#each argv}}
+                        {{#if @index}}
+                            <li class="list-group-item">
+                                <span class="text-primary">{{@key}}</span>
+                                {{this}}
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="fw-light">Información del sistema</h3>
+                <ul class="list-group">
+                    <li class="list-group-item"> <span class="text-primary">Sistema operativo: </span> {{os}} </li>
+                    <li class="list-group-item"> <span class="text-primary">Versión de NodeJS: </span> {{nodeVersion}} </li>
+                    <li class="list-group-item"> <span class="text-primary">Memoria total reservada: </span> {{memoryTotal}} </li>
+                    <li class="list-group-item"> <span class="text-primary">Path de ejecución: </span> {{execPath}} </li>
+                    <li class="list-group-item"> <span class="text-primary">Id de proceso: </span> {{processId}} </li>
+                    <li class="list-group-item"> <span class="text-primary">Carpeta del proyecto: </span> {{projectFolder}} </li>
+                </ul>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,29 @@
+{{> navbar}}
+
+
+{{!-- Mostrar en una lista todos los numeros randoms que se han generado --}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Numeros Random</h1>
+                {{!-- Crear una tabla con 10 columnas --}}
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Numero</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        {{!-- Recorrer el array de numeros random y mostrarlo en la tabla --}}
+                        {{#each randoms}}
+                            <tr>
+                                <th scope="row">{{@index}}</th>
+                                <td>{{this}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>

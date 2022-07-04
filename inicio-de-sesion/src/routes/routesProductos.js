@@ -58,7 +58,7 @@ async function putProducto (req, res) {
     const producto = req.body;
     await productos.updateProducto(id, producto)
         .then(response => {
-            res.render('succes-producto', { title: 'Producto guardado' });
+            res.render('succes-producto', { title: 'Producto guardado', id: id });
             console.log(response);
         })
         .catch(err => {
